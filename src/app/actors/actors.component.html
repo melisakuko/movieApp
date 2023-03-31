@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"
+            style="width: 15rem; margin-right: 10px; margin-bottom: 10px; padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0,0,0.2);"
+            *ngFor="let actor of actors">
+            <img [src]="actor.image" class="card-img-top" style="height: 300px">
+            <div class="card-body">
+                <h5 class="card-title">{{actor.name}} {{actor.surname}}</h5>
+                <p class="card-text">Age: {{actor.age}}</p>
+                <p class="card-text">Place of birth: {{actor.placeOfBirth}}</p>
+                <p class="card-text">Height: {{actor.height}}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
