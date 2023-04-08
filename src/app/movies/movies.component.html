@@ -16,12 +16,16 @@
                         <td>{{movie.director}}</td>
                         <td>{{movie.year}}</td>
                         <td>
-                            <p *ngIf="showdesc">{{movie.description}}</p>
-                            <p style="cursor: pointer; color: red; text-decoration: underline;" 
-                            (click)="showDesc()">Show description</p>
+                            <p *ngIf="movie.showDescription">{{movie.description}}</p>
+                            <p style="cursor: pointer; color: red; text-decoration: underline;"
+                                (click)="showDesc(movie.movieID)">{{movie.showDescription?'Hide description':'Show description'}}</p>
                         </td>
                         <td>{{movie.genre}}
                         <td><img [src]="movie.image" style="height: 150px" width="120"></td>
+                        <td>
+                            <button class="btn btn-success"
+                            [routerLink]="['/details', movie.movieID]">Details</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
