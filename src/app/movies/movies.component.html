@@ -4,27 +4,31 @@
             <table class="table table-striped">
                 <thead>
                     <th style="width: 16%">Title</th>
-                    <th style="width: 16%">Director</th>
+                    <th style="width: 16%">Type</th>
                     <th style="width: 10%">Year</th>
-                    <th style="width: 30%">Description</th>
-                    <th style="width: 10%">Genre</th>
+                    <th style="width: 30%">Serija</th>
+                    <th style="width: 10%">Epizoda</th>
                     <th style="width: 14%">Image</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let movie of movies">
-                        <td>{{movie.title}}</td>
-                        <td>{{movie.director}}</td>
-                        <td>{{movie.year}}</td>
+                        <td>{{movie.titleText?.text}}</td>
+                        <td>{{movie.titleType.text}}</td>
+                        <td>{{movie.releaseDate.year}}</td>
+                        <td>{{movie.titleType?.isSeries ? "Serija":"Nije serija"}}</td>
+                        <td>{{movie.titleType?.isEpisode ? "Epizoda":"Nije epizoda"}}</td>
                         <td>
                             <p *ngIf="movie.showDescription">{{movie.description}}</p>
                             <p style="cursor: pointer; color: red; text-decoration: underline;"
-                                (click)="showDesc(movie.movieID)">{{movie.showDescription?'Hide description':'Show description'}}</p>
+                                (click)="showDesc(movie.movieID)">{{movie.showDescription?'Hide description':'Show
+                                description'}}</p>
                         </td>
                         <td>{{movie.genre}}
-                        <td><img [src]="movie.image" style="height: 150px" width="120"></td>
+                        <td><img [src]="movie.primaryImage?.url" [title]="movie.caption?.plainText"
+                                style="height: 150px" width="120"></td>
                         <td>
                             <button class="btn btn-success"
-                            [routerLink]="['/details', movie.movieID]">Details</button>
+                                [routerLink]="['/movie-details', movie.movieID]">Details</button>
                         </td>
                     </tr>
                 </tbody>
